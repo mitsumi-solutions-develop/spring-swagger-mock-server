@@ -1,0 +1,5 @@
+spring:
+  swagger:
+    mock-server:
+      config-file: ${CONFIG_FILE:./var/swagger/mock-server.config.json}
+

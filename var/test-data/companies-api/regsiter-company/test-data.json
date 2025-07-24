@@ -1,0 +1,17 @@
+{
+  "test company 1": {
+    "status": 200,
+    "response": {
+      "id": 1,
+      "name": "test company 1",
+      "address": "test company address 1"
+    }
+  },
+  "test company 2": {
+    "status": 400,
+    "response": {
+      "error_code": "400",
+      "error_message": "bad request"
+    }
+  }
+}
