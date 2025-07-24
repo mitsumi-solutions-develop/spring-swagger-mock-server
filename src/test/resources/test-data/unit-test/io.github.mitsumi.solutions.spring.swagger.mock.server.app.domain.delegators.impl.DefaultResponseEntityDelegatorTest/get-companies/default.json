@@ -1,0 +1,17 @@
+{
+  "response": {
+    "count": 2,
+    "results": [
+      {
+        "id": 1,
+        "name": "test company 1",
+        "address": "test address 1"
+      },
+      {
+        "id": 2,
+        "name": "test company 2",
+        "address": "test address 2"
+      }
+    ]
+  }
+}
