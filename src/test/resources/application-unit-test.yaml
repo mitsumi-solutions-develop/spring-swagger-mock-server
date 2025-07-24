@@ -1,0 +1,9 @@
+spring:
+  swagger:
+    mock-server:
+      config-file: ${CONFIG_FILE:./var/swagger/mock-server.config.json}
+
+server:
+  port: ${SERVER_PORT:19001}
+  servlet:
+    context-path: ${CONTEXT_PATH:/swagger-mock-server/api}
