@@ -1,0 +1,53 @@
+[
+  {
+    "request_uri": "/companies",
+    "request_method": "get",
+    "key_parameter_expression": "['apiKey']",
+    "test_data_file_info": {
+      "directory": "./src/test/resources/test-data/unit-test/io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.delegators.impl.DefaultResponseEntityDelegatorTest/get-companies",
+      "default_success_data_filename": "default.json",
+      "filename": "test-data.json"
+    }
+  },
+  {
+    "request_uri": "/companies",
+    "request_method": "post",
+    "delegator_class": "io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.delegators.CompaniesApiRegisterCompanyDelegator",
+    "key_parameter_expression": "['company'].name",
+    "test_data_file_info": {
+      "directory": "./src/test/resources/test-data/unit-test/io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.delegators.impl.DefaultResponseEntityDelegatorTest/register-company",
+      "default_success_data_filename": "default.json",
+      "filename": "test-data.json"
+    }
+  },
+  {
+    "request_uri": "/companies/*",
+    "request_method": "get",
+    "key_parameter_expression": "['id']",
+    "test_data_file_info": {
+      "directory": "./src/test/resources/test-data/unit-test/io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.delegators.impl.DefaultResponseEntityDelegatorTest/get-company",
+      "default_success_data_filename": "default.json",
+      "filename": "test-data.json"
+    }
+  },
+  {
+    "request_uri": "/companies/*",
+    "request_method": "post",
+    "key_parameter_expression": "['id']",
+    "test_data_file_info": {
+      "directory": "./src/test/resources/test-data/unit-test/io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.delegators.impl.DefaultResponseEntityDelegatorTest/update-company",
+      "default_success_data_filename": "default.json",
+      "filename": "test-data.json"
+    }
+  },
+  {
+    "request_uri": "/companies/*",
+    "request_method": "delete",
+    "key_parameter_expression": "['id']",
+    "test_data_file_info": {
+      "directory": "./src/test/resources/test-data/unit-test/io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.delegators.impl.DefaultResponseEntityDelegatorTest/delete-company",
+      "default_success_data_filename": "default.json",
+      "filename": "test-data.json"
+    }
+  }
+]
