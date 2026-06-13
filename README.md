@@ -115,7 +115,7 @@ swagger mock server を構築し、条件に応じてresponseする機能であ�
   <dependency>
       <groupId>io.github.mitsumi-solutions-develop</groupId>
       <artifactId>spring-swagger-mock-server</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
   </dependency>
 ```
 
