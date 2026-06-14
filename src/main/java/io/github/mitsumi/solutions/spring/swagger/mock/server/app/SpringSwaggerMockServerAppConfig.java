@@ -1,12 +1,13 @@
 package io.github.mitsumi.solutions.spring.swagger.mock.server.app;
 
-import io.github.mitsumi.solutions.spring.json.Jsons;
+import io.github.mitsumi.solutions.shared.json.factories.JsonMapperFactory;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.util.AntPathMatcher;
+import tools.jackson.databind.json.JsonMapper;
 
 /**
  * Application config.
@@ -25,13 +26,13 @@ public class SpringSwaggerMockServerAppConfig {
     }
 
     /**
-     * Bean definition of Jsons.
+     * Bean definition of JsonMapper.
      *
-     * @return Jsons object
+     * @return JsonMapper object
      */
     @Bean
-    public Jsons jsons() {
-        return new Jsons();
+    public JsonMapper jsonMapper() {
+        return JsonMapperFactory.build().create();
     }
 
     /**
