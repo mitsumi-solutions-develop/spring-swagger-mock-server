@@ -1,13 +1,13 @@
 package io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.loaders;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import io.github.mitsumi.solutions.spring.json.Jsons;
 import io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.models.MockServerConfig;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,9 +27,9 @@ public class MockServerConfigLoader {
     private String configFile;
 
     /**
-     * jsons.
+     * The json mapper.
      */
-    private final Jsons jsons;
+    private final JsonMapper jsonMapper;
 
     /**
      * load a mock server config file.
@@ -38,6 +38,6 @@ public class MockServerConfigLoader {
      */
     @SneakyThrows
     public List<MockServerConfig> load() {
-        return jsons.deserialize(Files.readString(Path.of(configFile)), new TypeReference<>() {});
+        return jsonMapper.readValue(Files.readString(Path.of(configFile)), new TypeReference<>() {});
     }
 }

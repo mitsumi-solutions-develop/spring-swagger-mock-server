@@ -1,12 +1,13 @@
 package io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.resolvers;
 
-import io.github.mitsumi.solutions.spring.json.Jsons;
 import io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.loaders.TestDataFileLoader;
 import io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.models.TestDataFileInfo;
+import io.micrometer.common.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.Map;
 import java.util.Objects;
@@ -25,9 +26,9 @@ public class ResponseEntityResolver {
     private final TestDataFileLoader loader;
 
     /**
-     * Jsons.
+     * The json mapper.
      */
-    private final Jsons jsons;
+    private final JsonMapper jsonMapper;
 
     /**
      * response entityを解決する.
@@ -44,7 +45,8 @@ public class ResponseEntityResolver {
         final var defaultTestDataMap = loader.loadDefault(testDataFileInfo);
         final var testDataMap = loader.loadTestDataFile(testDataFileInfo);
 
-        final var statusOfResponse = (Map<String, Object>) testDataMap.get(keyParameterValue);
+        final var statusOfResponse = StringUtils.isEmpty(keyParameterValue) ?
+            null : (Map < String, Object >) testDataMap.get(keyParameterValue);
 
         return Objects.isNull(statusOfResponse) ?
             resolveByDefaultTestData(defaultTestDataMap, responseBodyTypes.get(HttpStatus.OK.value())) :
@@ -71,6 +73,7 @@ public class ResponseEntityResolver {
     }
 
     private Object responseBody(final Object responseBody, final Class<?> responseBodyType) {
-        return Objects.isNull(responseBody) ? null : jsons.deserialize(jsons.serialize(responseBody), responseBodyType);
+        return Objects.isNull(responseBody) ?
+            null : jsonMapper.readValue(jsonMapper.writeValueAsString(responseBody), responseBodyType);
     }
 }

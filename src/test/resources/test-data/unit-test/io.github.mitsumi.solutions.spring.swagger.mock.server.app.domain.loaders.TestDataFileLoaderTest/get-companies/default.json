@@ -4,13 +4,19 @@
     "results": [
       {
         "id": 1,
+        "key": "[uuid]",
         "name": "test company 1",
-        "address": "test address 1"
+        "address": "test address 1",
+        "created_at": "[now]::jst",
+        "expires": "[now+1d]::epoch-jst"
       },
       {
         "id": 2,
+        "key": "[uuid::32]",
         "name": "test company 2",
-        "address": "test address 2"
+        "address": "test address 2",
+        "created_at": "[now]::utc",
+        "expires": "[now+1y]::epoch-utc"
       }
     ]
   }
