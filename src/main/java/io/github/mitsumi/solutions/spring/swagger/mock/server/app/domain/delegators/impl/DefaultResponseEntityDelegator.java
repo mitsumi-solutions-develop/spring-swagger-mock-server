@@ -18,7 +18,7 @@ import java.util.Map;
  * デフォルトのResponseEntityを生成する委託者.
  */
 @Component
-@SuppressWarnings({"PMD.LongVariable", "PMD.CommentSize", "PMD.UnusedPrivateMethod"})
+@SuppressWarnings({"PMD.LongVariable", "PMD.CommentSize"})
 public class DefaultResponseEntityDelegator extends AbstractResponseEntityDelegator {
     /**
      * Parses expression strings into compiled expressions that can be evaluated.
