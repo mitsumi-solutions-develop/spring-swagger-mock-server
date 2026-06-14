@@ -19,7 +19,6 @@ import java.util.Optional;
  * ResponseEntity生成の委託親クラス.
  */
 @RequiredArgsConstructor
-@SuppressWarnings("PMD.CommentSize")
 public abstract class AbstractResponseEntityDelegator implements ResponseEntityDelegator {
 
     /**
@@ -79,7 +78,10 @@ public abstract class AbstractResponseEntityDelegator implements ResponseEntityD
         return Class.forName(name);
     }
 
-    private MockServerConfig mockServerConfig(final HttpServletRequest request) {
+    /**
+     * Find MockServerConfig.
+     */
+    protected MockServerConfig mockServerConfig(final HttpServletRequest request) {
         return configLoader.load().stream()
             .filter(config -> filterMockServerConfig(config, request))
             .findFirst()
