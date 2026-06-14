@@ -5,8 +5,6 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
     <description>Basic PMD ruleset for editor</description>
     <exclude-pattern>.*/test/.*</exclude-pattern>
-    <exclude-pattern>.*/ita/.*</exclude-pattern>
-    <exclude-pattern>.*/itb/.*</exclude-pattern>
 
     <rule ref="category/java/bestpractices.xml/AbstractClassWithoutAbstractMethod"/>
     <rule ref="category/java/bestpractices.xml/AccessorClassGeneration"/>
@@ -29,7 +27,7 @@
     <rule ref="category/java/bestpractices.xml/GuardLogStatement"/>
     <rule ref="category/java/bestpractices.xml/ImplicitFunctionalInterface"/>
     <rule ref="category/java/bestpractices.xml/JUnit4SuitesShouldUseSuiteAnnotation"/>
-    <rule ref="category/java/bestpractices.xml/JUnit5TestShouldBePackagePrivate"/>
+    <rule ref="category/java/bestpractices.xml/JUnitJupiterTestShouldBePackagePrivate"/>
     <rule ref="category/java/bestpractices.xml/JUnitUseExpected"/>
     <rule ref="category/java/bestpractices.xml/LiteralsFirstInComparisons"/>
     <rule ref="category/java/bestpractices.xml/LooseCoupling"/>
@@ -69,7 +67,6 @@
     <rule ref="category/java/codestyle.xml/ClassNamingConventions"/>
     <rule ref="category/java/codestyle.xml/FieldNamingConventions"/>
     <rule ref="category/java/codestyle.xml/FormalParameterNamingConventions"/>
-    <rule ref="category/java/codestyle.xml/GenericsNaming"/>
     <rule ref="category/java/codestyle.xml/LambdaCanBeMethodReference"/>
     <rule ref="category/java/codestyle.xml/LinguisticNaming"/>
     <rule ref="category/java/codestyle.xml/LocalVariableNamingConventions"/>
@@ -94,7 +91,6 @@
     <rule ref="category/java/codestyle.xml/AvoidUsingNativeCode"/>
     <rule ref="category/java/codestyle.xml/BooleanGetMethodName"/>
     <rule ref="category/java/codestyle.xml/CallSuperInConstructor"/>
-    <rule ref="category/java/codestyle.xml/CommentDefaultAccessModifier"/>
     <rule ref="category/java/codestyle.xml/ConfusingTernary"/>
     <rule ref="category/java/codestyle.xml/ControlStatementBraces"/>
     <rule ref="category/java/codestyle.xml/EmptyMethodInAbstractClassShouldBeAbstract"/>
@@ -106,7 +102,6 @@
     <rule ref="category/java/codestyle.xml/LocalVariableCouldBeFinal"/>
     <rule ref="category/java/codestyle.xml/MethodArgumentCouldBeFinal"/>
     <rule ref="category/java/codestyle.xml/NoPackage"/>
-    <!--     <rule ref="category/java/codestyle.xml/UseExplicitTypes"/> -->
     <rule ref="category/java/codestyle.xml/UseUnderscoresInNumericLiterals"/>
     <rule ref="category/java/codestyle.xml/OnlyOneReturn"/>
     <rule ref="category/java/codestyle.xml/PrematureDeclaration"/>
@@ -117,7 +112,6 @@
     <rule ref="category/java/codestyle.xml/UnnecessaryConstructor"/>
     <rule ref="category/java/codestyle.xml/UnnecessaryFullyQualifiedName"/>
     <rule ref="category/java/codestyle.xml/UnnecessaryImport"/>
-    <rule ref="category/java/codestyle.xml/UnnecessaryLocalBeforeReturn"/>
     <rule ref="category/java/codestyle.xml/UnnecessaryModifier"/>
     <rule ref="category/java/codestyle.xml/UnnecessaryReturn"/>
     <rule ref="category/java/codestyle.xml/UseDiamondOperator"/>
@@ -126,7 +120,7 @@
 
 
     <rule ref="category/java/design.xml/AbstractClassWithoutAnyMethod"/>
-    <rule ref="category/java/design.xml/AvoidCatchingGenericException"/>
+    <rule ref="category/java/errorprone.xml/AvoidCatchingGenericException"/>
     <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts"/>
     <rule ref="category/java/design.xml/AvoidRethrowingException"/>
     <rule ref="category/java/design.xml/AvoidThrowingNewInstanceOfSameException"/>
@@ -179,7 +173,11 @@
 
     <rule ref="category/java/documentation.xml/CommentContent"/>
     <rule ref="category/java/documentation.xml/CommentRequired"/>
-    <rule ref="category/java/documentation.xml/CommentSize"/>
+    <rule ref="category/java/documentation.xml/CommentSize">
+        <properties>
+            <property name="maxLines" value="10"/>
+        </properties>
+    </rule>
     <rule ref="category/java/documentation.xml/UncommentedEmptyConstructor"/>
     <rule ref="category/java/documentation.xml/UncommentedEmptyMethodBody"/>
 
@@ -194,8 +192,6 @@
     <rule ref="category/java/errorprone.xml/AvoidAssertAsIdentifier"/>
     <rule ref="category/java/errorprone.xml/AvoidBranchingStatementAsLastInLoop"/>
     <rule ref="category/java/errorprone.xml/AvoidCallingFinalize"/>
-    <rule ref="category/java/errorprone.xml/AvoidCatchingNPE"/>
-    <rule ref="category/java/errorprone.xml/AvoidCatchingThrowable"/>
     <rule ref="category/java/errorprone.xml/AvoidDecimalLiteralsInBigDecimalConstructor"/>
     <rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals"/>
     <rule ref="category/java/errorprone.xml/AvoidEnumAsIdentifier"/>
@@ -203,9 +199,6 @@
     <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName"/>
     <rule ref="category/java/errorprone.xml/AvoidInstanceofChecksInCatchClause"/>
     <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition"/>
-    <rule ref="category/java/errorprone.xml/AvoidLosingExceptionInformation"/>
-
-
 
     <rule ref="category/java/errorprone.xml/AvoidMultipleUnaryOperators"/>
     <rule ref="category/java/errorprone.xml/AvoidUsingOctalValues"/>
@@ -222,7 +215,6 @@
     <rule ref="category/java/errorprone.xml/CloneMethodReturnTypeMustMatchClassName"/>
 
 
-
     <rule ref="category/java/errorprone.xml/CloseResource"/>
     <rule ref="category/java/errorprone.xml/ConfusingArgumentToVarargsMethod"/>
     <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals"/>
@@ -236,7 +228,6 @@
     <rule ref="category/java/errorprone.xml/DoNotExtendJavaLangThrowable"/>
     <rule ref="category/java/errorprone.xml/DoNotHardCodeSDCard"/>
     <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally"/>
-    <rule ref="category/java/errorprone.xml/DontImportSun"/>
     <rule ref="category/java/errorprone.xml/DontUseFloatTypeForLoopIndices"/>
     <rule ref="category/java/errorprone.xml/EqualsNull"/>
     <rule ref="category/java/errorprone.xml/FinalizeDoesNotCallSuperFinalize"/>
@@ -291,12 +282,11 @@
     <rule ref="category/java/errorprone.xml/UseEqualsToCompareStrings"/>
 
 
-    <rule ref="category/java/errorprone.xml/UselessOperationOnImmutable"/>
     <rule ref="category/java/errorprone.xml/UseLocaleWithCaseConversions"/>
     <rule ref="category/java/errorprone.xml/UseProperClassLoader"/>
 
 
-     Empty rules
+    Empty rules
     <rule ref="category/java/codestyle.xml/EmptyControlStatement"/>
     <rule ref="category/java/codestyle.xml/UnnecessarySemicolon"/>
     <rule ref="category/java/errorprone.xml/EmptyCatchBlock"/>
@@ -333,7 +323,7 @@
     <rule ref="category/java/performance.xml/StringInstantiation"/>
     <rule ref="category/java/performance.xml/StringToString"/>
 
-        <rule ref="category/java/performance.xml/TooFewBranchesForSwitch"/>
+    <rule ref="category/java/performance.xml/TooFewBranchesForSwitch"/>
     <rule ref="category/java/performance.xml/UseArrayListInsteadOfVector"/>
     <rule ref="category/java/performance.xml/UseArraysAsList"/>
     <rule ref="category/java/performance.xml/UseIndexOfChar"/>

@@ -4,6 +4,7 @@ import io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.loaders
 import io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.models.MockServerConfig;
 import io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.resolvers.ResponseEntityResolver;
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
@@ -60,8 +61,14 @@ public class DefaultResponseEntityDelegator extends AbstractResponseEntityDelega
 
     private String keyParameterValue(final Map<String, Object> parameters,
                                      final MockServerConfig mockServerConfig) {
+        return StringUtils.isEmpty(mockServerConfig.keyParameterExpression()) ?
+            null : keyParameterValue(parameters, mockServerConfig.keyParameterExpression());
+    }
+
+    private String keyParameterValue(final Map<String, Object> parameters,
+                                     final String keyParameterExpression) {
         final var context = new StandardEvaluationContext(parameters);
-        final var expression = expressionParser.parseExpression(mockServerConfig.keyParameterExpression());
+        final var expression = expressionParser.parseExpression(keyParameterExpression);
 
         return expression.getValue(context, String.class);
     }
