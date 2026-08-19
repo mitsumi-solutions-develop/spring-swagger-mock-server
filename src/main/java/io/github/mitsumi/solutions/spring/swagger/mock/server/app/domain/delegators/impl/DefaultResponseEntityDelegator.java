@@ -56,7 +56,9 @@ public class DefaultResponseEntityDelegator extends AbstractResponseEntityDelega
                                                 final Map<String, Object> parameters,
                                                 final MockServerConfig mockServerConfig) {
         final var keyParameterValue = keyParameterValue(parameters, mockServerConfig);
-        return responseEntityResolver.resolve(keyParameterValue, mockServerConfig.testDataFileInfo(), responseBodyTypes);
+        return responseEntityResolver.resolve(
+            keyParameterValue, mockServerConfig.testDataFileInfo(), responseBodyTypes, parameters
+        );
     }
 
     private String keyParameterValue(final Map<String, Object> parameters,

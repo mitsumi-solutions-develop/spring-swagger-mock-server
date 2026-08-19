@@ -2,8 +2,8 @@
   "test company 1": {
     "status": 200,
     "response": {
-      "id": 1,
-      "name": "test company 1",
+      "id": ['company'].id,
+      "name": "['company'].name",
       "address": "test company address 1"
     }
   },

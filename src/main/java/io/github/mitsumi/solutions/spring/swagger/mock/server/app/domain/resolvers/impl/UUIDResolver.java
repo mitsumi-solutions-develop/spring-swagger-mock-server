@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 @Component
 @SuppressWarnings({"PMD.CommentRequired"})
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class UUIDResolver implements ValueResolver {
 
     @Override
-    public String resolve(final String content) {
+    public String resolve(final String content, final Map<String, Object> parameters) {
         final var lines = content.lines().toList();
         final var appender = new ArrayList<String>();
 

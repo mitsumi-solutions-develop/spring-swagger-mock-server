@@ -77,6 +77,13 @@
             <artifactId>java-shared</artifactId>
             <version>${mitsumi-solutions.java-shared.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>6.0.3</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 
