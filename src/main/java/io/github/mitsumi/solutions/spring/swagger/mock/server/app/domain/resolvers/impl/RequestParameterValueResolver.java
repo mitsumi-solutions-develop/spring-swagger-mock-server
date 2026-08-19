@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 @Component
 @RequiredArgsConstructor
-@SuppressWarnings("PMD.CommentRequired")
+@SuppressWarnings({"PMD.CommentRequired", "PMD.OnlyOneReturn"})
 public class RequestParameterValueResolver implements ValueResolver {
 
     private static final Pattern PATTERN = Pattern.compile("\\['[a-zA-Z0-9]+'\\](\\.[a-zA-Z0-9]+)*");
