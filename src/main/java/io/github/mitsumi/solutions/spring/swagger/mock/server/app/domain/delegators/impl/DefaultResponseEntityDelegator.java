@@ -33,10 +33,10 @@ public class DefaultResponseEntityDelegator extends AbstractResponseEntityDelega
     /**
      * Constructor.
      *
-     * @param applicationContext Central interface to provide configuration for an application.
-     * @param configLoader mock server config loader
-     * @param expressionParser Parses expression strings into compiled expressions that can be evaluated
-     * @param antPathMatcher PathMatcher implementation for Ant-style path patterns
+     * @param applicationContext     Central interface to provide configuration for an application.
+     * @param configLoader           mock server config loader
+     * @param expressionParser       Parses expression strings into compiled expressions that can be evaluated
+     * @param antPathMatcher         PathMatcher implementation for Ant-style path patterns
      * @param responseEntityResolver ResponseEntityの解決者
      */
     public DefaultResponseEntityDelegator(final ApplicationContext applicationContext,
@@ -56,17 +56,19 @@ public class DefaultResponseEntityDelegator extends AbstractResponseEntityDelega
                                                 final Map<String, Object> parameters,
                                                 final MockServerConfig mockServerConfig) {
         final var keyParameterValue = keyParameterValue(parameters, mockServerConfig);
-        return responseEntityResolver.resolve(keyParameterValue, mockServerConfig.testDataFileInfo(), responseBodyTypes);
+        return responseEntityResolver.resolve(
+            keyParameterValue, mockServerConfig.testDataFileInfo(), responseBodyTypes, parameters
+        );
     }
 
     private String keyParameterValue(final Map<String, Object> parameters,
                                      final MockServerConfig mockServerConfig) {
         return StringUtils.isEmpty(mockServerConfig.keyParameterExpression()) ?
-            null : keyParameterValue(parameters, mockServerConfig.keyParameterExpression());
+            null : resolveKeyParameterValue(parameters, mockServerConfig.keyParameterExpression());
     }
 
-    private String keyParameterValue(final Map<String, Object> parameters,
-                                     final String keyParameterExpression) {
+    private String resolveKeyParameterValue(final Map<String, Object> parameters,
+                                            final String keyParameterExpression) {
         final var context = new StandardEvaluationContext(parameters);
         final var expression = expressionParser.parseExpression(keyParameterExpression);
 

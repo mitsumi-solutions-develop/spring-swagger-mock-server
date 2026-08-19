@@ -41,9 +41,10 @@ public class ResponseEntityResolver {
     @SuppressWarnings("unchecked")
     public ResponseEntity<Object> resolve(final String keyParameterValue,
                                           final TestDataFileInfo testDataFileInfo,
-                                          final Map<Integer, Class<?>> responseBodyTypes) {
-        final var defaultTestDataMap = loader.loadDefault(testDataFileInfo);
-        final var testDataMap = loader.loadTestDataFile(testDataFileInfo);
+                                          final Map<Integer, Class<?>> responseBodyTypes,
+                                          final Map<String, Object> parameters) {
+        final var defaultTestDataMap = loader.loadDefault(testDataFileInfo, parameters);
+        final var testDataMap = loader.loadTestDataFile(testDataFileInfo, parameters);
 
         final var statusOfResponse = StringUtils.isEmpty(keyParameterValue) ?
             null : (Map < String, Object >) testDataMap.get(keyParameterValue);

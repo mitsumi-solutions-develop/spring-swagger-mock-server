@@ -5,6 +5,7 @@ import io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.resolve
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
 import java.util.Set;
 
 @Component
@@ -15,7 +16,7 @@ public class DateTimeResolver implements ValueResolver {
     private final Set<RelativeDateTimeResolver> resolvers;
 
     @Override
-    public String resolve(final String content) {
+    public String resolve(final String content, final Map<String, Object> parameters) {
         var temp = content;
 
         for (final var resolver : resolvers) {

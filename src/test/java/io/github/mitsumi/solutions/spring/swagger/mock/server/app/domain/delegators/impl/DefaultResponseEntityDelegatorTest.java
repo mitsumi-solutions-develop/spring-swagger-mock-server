@@ -3,7 +3,6 @@ package io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.delega
 import io.github.mitsumi.solutions.spring.swagger.mock.server.app.TestSpringSwaggerMockServerApplication;
 import io.github.mitsumi.solutions.spring.swagger.mock.server.app.domain.delegators.CompaniesApiRegisterCompanyDelegator;
 import io.github.mitsumi.solutions.spring.swagger.mock.server.app.test.models.Companies;
-import io.github.mitsumi.solutions.spring.swagger.mock.server.app.test.models.Company;
 import io.github.mitsumi.solutions.spring.swagger.mock.server.app.test.models.CompanyInfo;
 import io.github.mitsumi.solutions.spring.swagger.mock.server.app.test.models.ErrorResponse;
 import org.junit.jupiter.api.Assertions;
@@ -186,10 +185,10 @@ public class DefaultResponseEntityDelegatorTest {
     }
 
     static Stream<Arguments> test_registerCompany_ok_parameter_provider() {
-        var company = new Company().name("test company").address("test address");
+        var company = new CompanyInfo().id(2).name("test company").address("test address");
         return Stream.of(
             Arguments.arguments(
-                Map.of(200, Companies.class, 400, ErrorResponse.class),
+                Map.of(200, CompanyInfo.class, 400, ErrorResponse.class),
                 Map.of("apiKey", "cd9b5011-42d9-44b4-b760-b0794ae2e728", "company", company)
             )
         );
