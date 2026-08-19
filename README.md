@@ -4,9 +4,7 @@
 
 # 概要
 
-swagger mock server を構築し、条件に応じてresponseする機能である。
-
-本jarは、条件に応じて、responseする機能を提供するものである.
+swagger mock server を構築し、条件に応じてresponseする機能である.
 
 ## 処理詳細
 
@@ -38,7 +36,7 @@ swagger mock server を構築し、条件に応じてresponseする機能であ�
       - request_method: request method(get, post, put, delete)を設定する
       - key_parameter_expression: spring expression languageで、Map parametersの評価式を記載する
         例：
-        Map parametersが以下とする 
+        Map parametersは、以下とする 
         ```
         {
           "apiKey": "cd9b5011-42d9-44b4-b760-b0794ae2e728",
@@ -115,7 +113,7 @@ swagger mock server を構築し、条件に応じてresponseする機能であ�
   <dependency>
       <groupId>io.github.mitsumi-solutions-develop</groupId>
       <artifactId>spring-swagger-mock-server</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
   </dependency>
 ```
 
