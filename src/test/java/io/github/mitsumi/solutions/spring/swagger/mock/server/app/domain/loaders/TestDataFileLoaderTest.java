@@ -25,8 +25,9 @@ public class TestDataFileLoaderTest {
 
     @Test
     public void test_loadDefault() {
+        var parameters = Map.<String, Object>of("apiKey", "cd9b5011-42d9-44b4-b760-b0794ae2e728");
         var testDataFileInfo = mockServerConfigLoader.load().getFirst().testDataFileInfo();
-        var actual = testDataFileLoader.loadDefault(testDataFileInfo);
+        var actual = testDataFileLoader.loadDefault(testDataFileInfo, parameters);
 
         assertThat(actual).isNotNull();
 
@@ -48,8 +49,9 @@ public class TestDataFileLoaderTest {
 
     @Test
     public void test_loadTestDataFile() {
+        var parameters = Map.<String, Object>of("apiKey", "cd9b5011-42d9-44b4-b760-b0794ae2e728");
         var testDataFileInfo = mockServerConfigLoader.load().getFirst().testDataFileInfo();
-        var actual = testDataFileLoader.loadTestDataFile(testDataFileInfo);
+        var actual = testDataFileLoader.loadTestDataFile(testDataFileInfo, parameters);
 
         assertThat(actual).isNotNull();
 

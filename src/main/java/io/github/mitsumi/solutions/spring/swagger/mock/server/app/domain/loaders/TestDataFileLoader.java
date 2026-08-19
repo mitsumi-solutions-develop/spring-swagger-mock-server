@@ -37,9 +37,10 @@ public class TestDataFileLoader {
      * @param testDataFileInfo test data
      * @return loaded
      */
-    public Map<String, Object> loadDefault(final TestDataFileInfo testDataFileInfo) {
+    public Map<String, Object> loadDefault(final TestDataFileInfo testDataFileInfo,
+                                           final Map<String, Object> parameters) {
         final var path = Path.of(testDataFileInfo.directory(), testDataFileInfo.defaultSuccessDataFilename());
-        return load(path);
+        return load(path, parameters);
     }
 
     /**
@@ -48,17 +49,18 @@ public class TestDataFileLoader {
      * @param testDataFileInfo test data
      * @return loaded
      */
-    public Map<String, Object> loadTestDataFile(final TestDataFileInfo testDataFileInfo) {
+    public Map<String, Object> loadTestDataFile(final TestDataFileInfo testDataFileInfo,
+                                                final Map<String, Object> parameters) {
         final var path = Path.of(testDataFileInfo.directory(), testDataFileInfo.filename());
-        return load(path);
+        return load(path, parameters);
     }
 
     @SneakyThrows
-    private Map<String, Object> load(final Path path) {
+    private Map<String, Object> load(final Path path, final Map<String, Object> parameters) {
         var content = Files.readString(path);
 
         for (final var valueResolver : valueResolvers) {
-            content = valueResolver.resolve(content);
+            content = valueResolver.resolve(content, parameters);
         }
 
         return jsonMapper.readValue(content, new TypeReference<>() {

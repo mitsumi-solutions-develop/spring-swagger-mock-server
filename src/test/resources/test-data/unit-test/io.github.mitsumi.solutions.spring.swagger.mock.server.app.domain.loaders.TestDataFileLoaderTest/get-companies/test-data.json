@@ -6,11 +6,13 @@
       "results": [
         {
           "id": 1,
+          "apiKey": "['apiKey']",
           "name": "test company 1",
           "address": "test address 1"
         },
         {
           "id": 2,
+          "apiKey": "['apiKey']",
           "name": "test company 2",
           "address": "test address 2"
         }

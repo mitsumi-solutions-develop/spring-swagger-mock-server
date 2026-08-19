@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.mitsumi-solutions-develop</groupId>
     <artifactId>spring-swagger-mock-server</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>spring-swagger-mock-server</name>
     <description>spring swagger mock server</description>
@@ -77,6 +77,13 @@
             <artifactId>java-shared</artifactId>
             <version>${mitsumi-solutions.java-shared.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>6.0.3</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 
