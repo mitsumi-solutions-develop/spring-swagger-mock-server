@@ -105,7 +105,7 @@ swagger mock server を構築し、条件に応じてresponseする機能であ�
 
 # supported
 
-- java version: 21
+- java version: 25
 
 # maven dependency
 
